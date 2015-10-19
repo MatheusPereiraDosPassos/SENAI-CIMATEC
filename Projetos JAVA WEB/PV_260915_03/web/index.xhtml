@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Sistema</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="5">
+                <h:outputLabel value="Nome"/>
+                <h:outputLabel value="Estado"/>
+                <h:outputLabel value="Divisao"/>
+                <h:outputLabel value="Investimento"/>
+                <h:outputLabel value="Numero"/>
+                <h:inputText value="#{tmBean.time.nome}"/>
+                <h:inputText value="#{tmBean.time.estado}"/>
+                <h:inputText value="#{tmBean.time.divisao}"/>
+                <h:inputText value="#{tmBean.time.investimento}"/>
+                <h:inputText value="#{tmBean.time.numero}"/>
+                <h:commandButton value="Salvar" action="#{tmBean.salvar()}"/>    
+            </h:panelGrid>
+            <h:dataTable value="#{tmBean.times}" var="tm">
+                <h:column>
+                    <h:commandLink value="#{tmBean.time.numero}" action="#{tmBean.editar(tm)}"></h:commandLink>
+                </h:column>
+                <h:column>
+                   #{tm.nome}
+                   #{tm.estado}
+                   #{tm.divisao}
+                   #{tm.investimento}
+                   
+                </h:column>
+                <h:column>
+                    <h:commandButton value="Excluir" action="#{tmBean.excluir(tm)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
+
